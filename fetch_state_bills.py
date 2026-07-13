@@ -24,7 +24,7 @@ import json
 import time
 import httpx
 
-API_KEY = os.environ.get("LEGISCAN_API_KEY", "")
+API_KEY = os.environ.get("LEGISCAN_API_KEY", "").strip()
 BASE_URL = "https://api.legiscan.com/"
 OUTPUT_PATH = "state_bills.json"
 
