@@ -216,75 +216,82 @@ app.add_middleware(
 )
 
 
-async def fetch_bills_for_keyword(client: httpx.AsyncClient, keyword: str, limit: int = 250) -> list[dict]:
+async def fetch_bills_for_keyword(client: httpx.AsyncClient, keyword: str, semaphore: asyncio.Semaphore, limit: int = 60) -> list[dict]:
     """
     Pull bills matching a keyword from the Congress.gov API, paginating
     until we've collected `limit` results or run out of results.
 
     Restricted to the 119th Congress (2025-2026) so we don't pull in
-    decades of unrelated old bills — the API's "query" param does a loose
-    keyword match, not an exact phrase match, so without a congress filter
-    it returns a lot of noise from every session since the 1970s.
+    decades of unrelated old bills. Uses a semaphore so we're not firing
+    100+ requests at once — that's what caused the free-tier instance to
+    exceed its 512MB memory limit and crash-loop earlier.
     """
     results = []
     offset = 0
-    page_size = 250  # API max per request
+    page_size = 100  # smaller than the API's 250 max, to keep memory per-request down
 
-    while len(results) < limit:
-        resp = await client.get(
-            f"{BASE_URL}/bill/119",
-            params={
-                "api_key": API_KEY,
-                "query": keyword,
-                "limit": page_size,
-                "offset": offset,
-                "format": "json",
-            },
-        )
-        if resp.status_code != 200:
-            break
-
-        data = resp.json()
-        bills = data.get("bills", [])
-        if not bills:
-            break
-
-        for b in bills:
-            title = b.get("title", "")
-            # Extra relevance filter: require the actual keyword phrase (or its
-            # core words) to appear in the title, since the API's own matching
-            # is looser than a real phrase search.
-            keyword_words = [w.lower() for w in keyword.split() if len(w) > 3]
-            if not any(w in title.lower() for w in keyword_words):
-                continue
-
-            results.append(
-                {
-                    "number": f"{b.get('type', '')}{b.get('number', '')}",
-                    "title": title,
-                    "congress": b.get("congress"),
-                    "latestActionText": (b.get("latestAction") or {}).get("text", ""),
-                    "latestActionDate": (b.get("latestAction") or {}).get("actionDate", ""),
-                    "url": b.get("url", ""),
-                    "matched_keyword": keyword,
-                }
+    async with semaphore:
+        while len(results) < limit:
+            resp = await client.get(
+                f"{BASE_URL}/bill/119",
+                params={
+                    "api_key": API_KEY,
+                    "query": keyword,
+                    "limit": page_size,
+                    "offset": offset,
+                    "format": "json",
+                },
             )
+            if resp.status_code != 200:
+                break
 
-        offset += page_size
-        if len(bills) < page_size:
-            break  # last page
+            data = resp.json()
+            bills = data.get("bills", [])
+            if not bills:
+                break
+
+            for b in bills:
+                title = b.get("title", "")
+                # Extra relevance filter: require the actual keyword phrase (or its
+                # core words) to appear in the title, since the API's own matching
+                # is looser than a real phrase search.
+                keyword_words = [w.lower() for w in keyword.split() if len(w) > 3]
+                if not any(w in title.lower() for w in keyword_words):
+                    continue
+
+                results.append(
+                    {
+                        "number": f"{b.get('type', '')}{b.get('number', '')}",
+                        "title": title,
+                        "congress": b.get("congress"),
+                        "latestActionText": (b.get("latestAction") or {}).get("text", ""),
+                        "latestActionDate": (b.get("latestAction") or {}).get("actionDate", ""),
+                        "url": b.get("url", ""),
+                        "matched_keyword": keyword,
+                    }
+                )
+
+            offset += page_size
+            if len(bills) < page_size:
+                break  # last page
 
     return results[:limit]
 
 
 async def refresh_cache():
-    """Query every condition keyword in parallel and merge into one deduplicated cache file."""
+    """Query every condition keyword and merge into one deduplicated cache file.
+
+    Uses a semaphore capped at 5 concurrent requests. With ~150 keywords in the
+    list, running them ALL at once (as an earlier version did) is what caused
+    the free-tier instance to exceed its 512MB memory limit and crash-loop —
+    each concurrent request holds its own response payload in memory at the
+    same time. Capping concurrency keeps memory bounded no matter how long
+    the keyword list gets, at the cost of the refresh taking a bit longer.
+    """
     all_bills = {}
+    semaphore = asyncio.Semaphore(5)
     async with httpx.AsyncClient(timeout=30) as client:
-        # Run all keyword searches at the same time instead of one after another —
-        # this is the main thing that was making the first request slow, since 20
-        # keywords searched sequentially means 20x the wait.
-        tasks = [fetch_bills_for_keyword(client, keyword, limit=30) for keyword in CONDITION_KEYWORDS]
+        tasks = [fetch_bills_for_keyword(client, keyword, semaphore, limit=30) for keyword in CONDITION_KEYWORDS]
         results_per_keyword = await asyncio.gather(*tasks, return_exceptions=True)
 
     for bills in results_per_keyword:
@@ -306,6 +313,16 @@ def load_cache() -> Optional[dict]:
     if time.time() - data.get("updated_at", 0) > CACHE_TTL_SECONDS:
         return None  # stale, caller should refresh
     return data
+
+
+@app.get("/")
+async def root():
+    return {
+        "service": "PVC Legislation Sync",
+        "status": "running",
+        "try": "/bills — real bill data from Congress.gov",
+        "also": "/refresh — force a re-sync (POST)",
+    }
 
 
 @app.get("/bills")
