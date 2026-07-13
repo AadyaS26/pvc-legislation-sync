@@ -1,0 +1,37 @@
+name: Update state_bills.json
+
+on:
+  schedule:
+    - cron: "30 13 * * *"   # daily, 30 min after the federal sync
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-state-bills:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install httpx
+
+      - name: Fetch latest state bills from LegiScan
+        env:
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+        run: python fetch_state_bills.py
+
+      - name: Commit updated state_bills.json
+        run: |
+          git config user.name "PVC Bill Bot"
+          git config user.email "actions@github.com"
+          git add state_bills.json
+          git diff --staged --quiet || git commit -m "Auto-update state_bills.json"
+          git push
