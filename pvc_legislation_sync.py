@@ -1,7 +1,41 @@
+"""
+PVC Legislation Sync Service
+-----------------------------
+Pulls real bill data from the official Congress.gov API (api.congress.gov)
+and stores it for the legislation database frontend to read.
+
+This is the legitimate way to track bills "at scale" — Congress.gov's own
+website (congress.gov) blocks scraping via robots.txt, but they publish an
+official API specifically so people don't have to scrape it.
+
+SETUP
+-----
+1. Get a free API key: https://api.congress.gov/sign-up/
+2. pip install fastapi uvicorn httpx --break-system-packages
+3. export CONGRESS_API_KEY="your_key_here"
+4. uvicorn pvc_legislation_sync:app --reload
+
+WHAT THIS DOES
+--------------
+- Queries the Congress.gov API for bills matching your condition keywords
+  (celiac, autoimmune, lupus, psoriasis, etc.) across the current Congress.
+- Handles pagination so you can pull hundreds or thousands of results,
+  not just the first page.
+- Caches results to disk so the frontend can read them without hitting
+  the API on every page load (the API is rate-limited).
+- Exposes a simple /bills endpoint your React legislation page can call
+  instead of using the hardcoded BILLS array.
+
+This is a starting point, not a finished production service — you'll want
+to add real error handling, a proper database instead of a JSON file, and
+probably a scheduled job (cron, or a simple while-loop with sleep) to
+refresh the cache daily rather than on every request.
+"""
 
 import os
 import json
 import time
+import asyncio
 from pathlib import Path
 from typing import Optional
 
@@ -14,28 +48,164 @@ BASE_URL = "https://api.congress.gov/v3"
 CACHE_PATH = Path("bills_cache.json")
 CACHE_TTL_SECONDS = 60 * 60 * 24  # refresh once a day
 
-
+# Condition keywords to search for, pulled from the real Autoimmune Association
+# disease list. Widening this list is the honest way to search more broadly —
+# note that most rare conditions will simply return zero real bills, because
+# most rare conditions genuinely have no federal legislation naming them.
+# That's not a bug to fix; it's the real state of things.
 CONDITION_KEYWORDS = [
-    "celiac disease",
-    "autoimmune disease",
-    "lupus",
-    "rheumatoid arthritis",
-    "multiple sclerosis",
-    "psoriasis",
-    "psoriatic arthritis",
+    'Achalasia',
+    'Acute disseminated encephalomyelitis',
+    "Addison's disease",
+    "Adult Still's disease",
+    'Agammaglobulinemia',
+    'Alopecia areata',
+    'Amyloidosis',
+    'Ankylosing spondylitis',
+    'Anti-GBM/anti-TBM nephritis',
+    'Antiphospholipid syndrome',
+    'Antisynthetase syndrome',
+    'Atopic dermatitis',
+    'Autoimmune angioedema',
+    'Autoimmune dysautonomia',
+    'Autoimmune encephalomyelitis',
+    'Autoimmune enteropathy',
+    'Autoimmune hepatitis',
+    'Autoimmune inner ear disease',
+    'Autoimmune lymphoproliferative syndrome',
+    'Autoimmune myocarditis',
+    'Autoimmune oophoritis',
+    'Autoimmune orchitis',
+    'Autoimmune pancreatitis',
+    'Autoimmune progesterone dermatitis',
+    'Autoimmune retinopathy',
+    'Autoimmune urticaria',
+    'Axonal and neuronal neuropathy',
+    'Baló disease',
+    "Behçet's disease",
+    'Benign mucosal pemphigoid',
+    'Bullous pemphigoid',
+    'Castleman disease',
+    'Celiac disease',
+    'Chagas disease',
+    'Chronic inflammatory demyelinating polyneuropathy',
+    'Chronic recurrent multifocal osteomyelitis',
+    'Churg-Strauss syndrome',
+    'Cicatricial pemphigoid',
+    "Cogan's syndrome",
+    'Cold agglutinin disease',
+    'Congenital heart block',
+    'Coxsackie myocarditis',
+    'CREST syndrome',
     "Crohn's disease",
-    "ulcerative colitis",
-    "inflammatory bowel disease",
-    "type 1 diabetes",
-    "Sjogren's",
-    "Hashimoto's",
+    'Dermatitis herpetiformis',
+    'Dermatomyositis',
+    "Devic's disease",
+    'Discoid lupus',
+    "Dressler's syndrome",
+    'Endometriosis',
+    'Eosinophilic esophagitis',
+    'Eosinophilic fasciitis',
+    'Erythema nodosum',
+    'Essential mixed cryoglobulinemia',
+    'Evans syndrome',
+    'Fibromyalgia',
+    'Fibrosing alveolitis',
+    'Giant cell arteritis',
+    'Giant cell myocarditis',
+    'Glomerulonephritis',
+    "Goodpasture's syndrome",
+    'Granulomatosis with polyangiitis',
     "Graves' disease",
-    "scleroderma",
-    "vasculitis",
-    "myasthenia gravis",
-    "vitiligo",
-    "alopecia areata",
-    "gluten-free labeling",
+    'Guillain-Barré syndrome',
+    "Hashimoto's encephalopathy",
+    "Hashimoto's thyroiditis",
+    'Hemolytic anemia',
+    'Henoch-Schönlein purpura',
+    'Herpes gestationis',
+    'Hidradenitis suppurativa',
+    'Hypogammaglobulinemia',
+    'IgA nephropathy',
+    'IgG4-related disease',
+    'Immune thrombocytopenic purpura',
+    'Inclusion body myositis',
+    'Interstitial cystitis',
+    'Juvenile arthritis',
+    'Juvenile myositis',
+    'Kawasaki disease',
+    'Lambert-Eaton myasthenic syndrome',
+    'Leukocytoclastic vasculitis',
+    'Lichen planus',
+    'Lichen sclerosus',
+    'Linear IgA disease',
+    'Lupus',
+    "Ménière's disease",
+    'Microscopic polyangiitis',
+    'Miller-Fisher syndrome',
+    'Mixed connective tissue disease',
+    "Mooren's ulcer",
+    'Multifocal motor neuropathy',
+    'Multiple sclerosis',
+    'Myasthenia gravis',
+    'Narcolepsy',
+    'Neutropenia',
+    'Ocular cicatricial pemphigoid',
+    'Optic neuritis',
+    'Palindromic rheumatism',
+    'Paraneoplastic cerebellar degeneration',
+    'Paroxysmal nocturnal hemoglobinuria',
+    'Parry-Romberg syndrome',
+    'Pars planitis',
+    'Parsonage-Turner syndrome',
+    'Pemphigus',
+    'Peripheral neuropathy',
+    'Pernicious anemia',
+    'POEMS syndrome',
+    'Polyarteritis nodosa',
+    'Polyglandular autoimmune syndrome',
+    'Polymyalgia rheumatica',
+    'Polymyositis',
+    'Primary biliary cholangitis',
+    'Primary sclerosing cholangitis',
+    'Psoriasis',
+    'Psoriatic arthritis',
+    'Pure red cell aplasia',
+    'Pyoderma gangrenosum',
+    "Raynaud's phenomenon",
+    'Reactive arthritis',
+    'Reflex sympathetic dystrophy',
+    'Relapsing polychondritis',
+    'Restless legs syndrome',
+    'Retroperitoneal fibrosis',
+    'Rheumatic fever',
+    'Rheumatoid arthritis',
+    'Sarcoidosis',
+    'Schmidt syndrome',
+    'Scleritis',
+    'Scleroderma',
+    "Sjögren's disease",
+    'Stiff person syndrome',
+    "Susac's syndrome",
+    'Sympathetic ophthalmia',
+    "Takayasu's arteritis",
+    'Temporal arteritis',
+    'Tolosa-Hunt syndrome',
+    'Transverse myelitis',
+    'Type 1 diabetes',
+    'Ulcerative colitis',
+    'Undifferentiated connective tissue disease',
+    'Uveitis',
+    'Vasculitis',
+    'Vitiligo',
+    'Vogt-Koyanagi-Harada disease',
+    'gluten-free labeling',
+    'step therapy',
+    'medical foods',
+    'orphan disease',
+    'rare disease',
+    'chronic illness insurance',
+    'biologics access',
+    'autoimmune disease',
 ]
 
 app = FastAPI(title="PVC Legislation Sync")
@@ -47,7 +217,15 @@ app.add_middleware(
 
 
 async def fetch_bills_for_keyword(client: httpx.AsyncClient, keyword: str, limit: int = 250) -> list[dict]:
+    """
+    Pull bills matching a keyword from the Congress.gov API, paginating
+    until we've collected `limit` results or run out of results.
 
+    Restricted to the 119th Congress (2025-2026) so we don't pull in
+    decades of unrelated old bills — the API's "query" param does a loose
+    keyword match, not an exact phrase match, so without a congress filter
+    it returns a lot of noise from every session since the 1970s.
+    """
     results = []
     offset = 0
     page_size = 250  # API max per request
@@ -100,14 +278,21 @@ async def fetch_bills_for_keyword(client: httpx.AsyncClient, keyword: str, limit
 
 
 async def refresh_cache():
-    """Query every condition keyword and merge into one deduplicated cache file."""
+    """Query every condition keyword in parallel and merge into one deduplicated cache file."""
     all_bills = {}
     async with httpx.AsyncClient(timeout=30) as client:
-        for keyword in CONDITION_KEYWORDS:
-            bills = await fetch_bills_for_keyword(client, keyword)
-            for b in bills:
-                # dedupe on bill number since one bill can match multiple keywords
-                all_bills[b["number"]] = b
+        # Run all keyword searches at the same time instead of one after another —
+        # this is the main thing that was making the first request slow, since 20
+        # keywords searched sequentially means 20x the wait.
+        tasks = [fetch_bills_for_keyword(client, keyword, limit=30) for keyword in CONDITION_KEYWORDS]
+        results_per_keyword = await asyncio.gather(*tasks, return_exceptions=True)
+
+    for bills in results_per_keyword:
+        if isinstance(bills, Exception):
+            continue  # one keyword failing shouldn't take down the whole refresh
+        for b in bills:
+            # dedupe on bill number since one bill can match multiple keywords
+            all_bills[b["number"]] = b
 
     payload = {"updated_at": time.time(), "count": len(all_bills), "bills": list(all_bills.values())}
     CACHE_PATH.write_text(json.dumps(payload, indent=2))
