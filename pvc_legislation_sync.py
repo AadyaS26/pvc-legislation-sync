@@ -252,11 +252,12 @@ async def fetch_bills_for_keyword(client: httpx.AsyncClient, keyword: str, semap
 
             for b in bills:
                 title = b.get("title", "")
-                # Extra relevance filter: require the actual keyword phrase (or its
-                # core words) to appear in the title, since the API's own matching
-                # is looser than a real phrase search.
-                keyword_words = [w.lower() for w in keyword.split() if len(w) > 3]
-                if not any(w in title.lower() for w in keyword_words):
+                # Relevance filter: require the FULL keyword phrase to appear in the
+                # title (not just any one word from it). Matching on any single word
+                # was the bug — generic words like "disease" or "adult" appear in tons
+                # of unrelated bills (sickle cell, obesity, hepatitis...), so an
+                # "any word matches" filter let all of those through as false positives.
+                if keyword.lower() not in title.lower():
                     continue
 
                 results.append(
