@@ -27,7 +27,7 @@ import json
 import time
 import httpx
 
-API_KEY = os.environ.get("CONGRESS_API_KEY", "")
+API_KEY = os.environ.get("CONGRESS_API_KEY", "").strip()
 BASE_URL = "https://api.congress.gov/v3"
 OUTPUT_PATH = "bills.json"
 
@@ -82,10 +82,22 @@ def fetch_bills_for_keyword(client: httpx.Client, keyword: str, limit: int = 50)
     page_size = 100
 
     while len(results) < limit:
-        resp = client.get(
-            f"{BASE_URL}/bill/119",
-            params={"api_key": API_KEY, "query": keyword, "limit": page_size, "offset": offset, "format": "json"},
-        )
+        try:
+            resp = client.get(
+                f"{BASE_URL}/bill/119",
+                params={"api_key": API_KEY, "query": keyword, "limit": page_size, "offset": offset, "format": "json"},
+            )
+        except httpx.TimeoutException:
+            # A single slow request from Congress.gov shouldn't kill the whole
+            # run — just skip this keyword and let the rest continue. This is
+            # what caused the crash on a real run: one request timed out and
+            # there was no error handling around the network call.
+            print(f"  [{keyword}] Timed out, skipping this keyword")
+            break
+        except httpx.RequestError as e:
+            print(f"  [{keyword}] Request failed ({e}), skipping this keyword")
+            break
+
         if resp.status_code != 200:
             print(f"  [{keyword}] API error {resp.status_code}, skipping")
             break
@@ -126,7 +138,7 @@ def main():
         sys.exit(1)
 
     all_bills = {}
-    with httpx.Client(timeout=30) as client:
+    with httpx.Client(timeout=60) as client:
         for keyword in CONDITION_KEYWORDS:
             print(f"Searching: {keyword}")
             bills = fetch_bills_for_keyword(client, keyword)
