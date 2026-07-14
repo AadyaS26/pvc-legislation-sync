@@ -1,0 +1,70 @@
+{
+  "updated_at": 1784005151.990891,
+  "updated_at_readable": "2026-07-14 04:59 UTC",
+  "count": 7,
+  "bills": [
+    {
+      "number": "HR9000",
+      "title": "SCREEN for Type 1 Diabetes Act of 2026",
+      "congress": 119,
+      "latestActionText": "Referred to the House Committee on Energy and Commerce.",
+      "latestActionDate": "2026-05-21",
+      "url": "https://api.congress.gov/v3/bill/119/hr/9000?format=json",
+      "matched_keyword": "type 1 diabetes"
+    },
+    {
+      "number": "S4612",
+      "title": "SCREEN for Type 1 Diabetes Act of 2026",
+      "congress": 119,
+      "latestActionText": "Read twice and referred to the Committee on Health, Education, Labor, and Pensions.",
+      "latestActionDate": "2026-05-20",
+      "url": "https://api.congress.gov/v3/bill/119/s/4612?format=json",
+      "matched_keyword": "type 1 diabetes"
+    },
+    {
+      "number": "S3304",
+      "title": "Medical Foods and Formulas Access Act of 2025",
+      "congress": 119,
+      "latestActionText": "Read twice and referred to the Committee on Finance.",
+      "latestActionDate": "2025-12-02",
+      "url": "https://api.congress.gov/v3/bill/119/s/3304?format=json",
+      "matched_keyword": "medical foods"
+    },
+    {
+      "number": "HR5684",
+      "title": "Medical Foods and Formulas Access Act of 2025",
+      "congress": 119,
+      "latestActionText": "Referred to the Committee on Energy and Commerce, and in addition to the Committees on Ways and Means, and Oversight and Government Reform, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+      "latestActionDate": "2025-10-03",
+      "url": "https://api.congress.gov/v3/bill/119/hr/5684?format=json",
+      "matched_keyword": "medical foods"
+    },
+    {
+      "number": "HRES484",
+      "title": "Expressing support for the recognition of \"Hidradenitis Suppurativa Awareness Week\".",
+      "congress": 119,
+      "latestActionText": "Referred to the House Committee on Energy and Commerce.",
+      "latestActionDate": "2025-06-06",
+      "url": "https://api.congress.gov/v3/bill/119/hres/484?format=json",
+      "matched_keyword": "hidradenitis suppurativa"
+    },
+    {
+      "number": "HRES245",
+      "title": "Recognizing the significance of Sj\u00f6gren's disease as a serious and systemic autoimmune disease and expressing support for the designation of April 2025 as \"Sj\u00f6gren's Awareness Month\".",
+      "congress": 119,
+      "latestActionText": "Referred to the House Committee on Energy and Commerce.",
+      "latestActionDate": "2025-03-24",
+      "url": "https://api.congress.gov/v3/bill/119/hres/245?format=json",
+      "matched_keyword": "autoimmune disease"
+    },
+    {
+      "number": "HRES225",
+      "title": "Supporting the designation of March as \"Autoimmune Awareness Month\" and supporting efforts to increase awareness of autoimmune diseases and increase funding for autoimmune disease research.",
+      "congress": 119,
+      "latestActionText": "Referred to the House Committee on Energy and Commerce.",
+      "latestActionDate": "2025-03-14",
+      "url": "https://api.congress.gov/v3/bill/119/hres/225?format=json",
+      "matched_keyword": "autoimmune disease"
+    }
+  ]
+}
