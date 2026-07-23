@@ -1,6 +1,6 @@
 {
-  "updated_at": 1784733558.5177827,
-  "updated_at_readable": "2026-07-22 15:19 UTC",
+  "updated_at": 1784820638.1283796,
+  "updated_at_readable": "2026-07-23 15:30 UTC",
   "count": 154,
   "states_covered": [
     "CA",
@@ -40,6 +40,16 @@
   "states_covered_count": 33,
   "bills": [
     {
+      "number": "H4552",
+      "title": "To ensure access to scalp and facial hair prostheses for children and adults with alopecia areata",
+      "state": "MA",
+      "relevance": 99,
+      "lastAction": "Committee recommended bill ought to pass and referred to the committee on House Ways and Means",
+      "lastActionDate": "2026-07-22",
+      "url": "https://legiscan.com/MA/bill/H4552/2025",
+      "matched_keyword": "alopecia areata"
+    },
+    {
       "number": "SB3509",
       "title": "INS CD-BIOMARKER TESTING",
       "state": "IL",
@@ -78,16 +88,6 @@
       "lastActionDate": "2026-06-17",
       "url": "https://legiscan.com/DE/bill/SCR206/2025",
       "matched_keyword": "autoimmune disease"
-    },
-    {
-      "number": "H4552",
-      "title": "To ensure access to scalp and facial hair prostheses for children and adults with alopecia areata",
-      "state": "MA",
-      "relevance": 99,
-      "lastAction": "Reporting date extended to Friday, July 31, 2026",
-      "lastActionDate": "2026-06-17",
-      "url": "https://legiscan.com/MA/bill/H4552/2025",
-      "matched_keyword": "alopecia areata"
     },
     {
       "number": "S2928",
@@ -314,7 +314,7 @@
       "title": "Relative to insurance coverage for biomarker testing.",
       "state": "NH",
       "relevance": 99,
-      "lastAction": "Refer for Interim Study: Motion Adopted Voice Vote 05/14/2026 House Journal  13",
+      "lastAction": "Refer for Interim Study: Motion Adopted Voice Vote 05/14/2026 House Journal  13 P. 9",
       "lastActionDate": "2026-05-14",
       "url": "https://legiscan.com/NH/bill/SB606/2026",
       "matched_keyword": "biomarker testing"
