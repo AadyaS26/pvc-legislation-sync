@@ -1,6 +1,6 @@
 {
-  "updated_at": 1785167853.265154,
-  "updated_at_readable": "2026-07-27 15:57 UTC",
+  "updated_at": 1785253259.99161,
+  "updated_at_readable": "2026-07-28 15:40 UTC",
   "count": 154,
   "states_covered": [
     "CA",
@@ -39,6 +39,16 @@
   ],
   "states_covered_count": 33,
   "bills": [
+    {
+      "number": "H5013",
+      "title": "To establish a celiac disease screening pilot program",
+      "state": "MA",
+      "relevance": 99,
+      "lastAction": "Committee recommended bill ought to pass and referred to the committee on House Ways and Means",
+      "lastActionDate": "2026-07-27",
+      "url": "https://legiscan.com/MA/bill/H5013/2025",
+      "matched_keyword": "celiac disease"
+    },
     {
       "number": "H4552",
       "title": "To ensure access to scalp and facial hair prostheses for children and adults with alopecia areata",
@@ -188,16 +198,6 @@
       "lastActionDate": "2026-05-29",
       "url": "https://legiscan.com/LA/bill/SB169/2026",
       "matched_keyword": "biomarker testing"
-    },
-    {
-      "number": "H5013",
-      "title": "To establish a celiac disease screening pilot program",
-      "state": "MA",
-      "relevance": 99,
-      "lastAction": "Reporting date extended to Thursday, December 31, 2026",
-      "lastActionDate": "2026-05-28",
-      "url": "https://legiscan.com/MA/bill/H5013/2025",
-      "matched_keyword": "celiac disease"
     },
     {
       "number": "H8600",
