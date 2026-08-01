@@ -1,7 +1,7 @@
 {
-  "updated_at": 1785512114.4165215,
-  "updated_at_readable": "2026-07-31 15:35 UTC",
-  "count": 154,
+  "updated_at": 1785595366.6141725,
+  "updated_at_readable": "2026-08-01 14:42 UTC",
+  "count": 153,
   "states_covered": [
     "CA",
     "CT",
@@ -40,6 +40,16 @@
   "states_covered_count": 33,
   "bills": [
     {
+      "number": "SB3509",
+      "title": "INS CD-BIOMARKER TESTING",
+      "state": "IL",
+      "relevance": 99,
+      "lastAction": "Public Act . . . . . . . . . 104-0731",
+      "lastActionDate": "2026-07-31",
+      "url": "https://legiscan.com/IL/bill/SB3509/2025",
+      "matched_keyword": "biomarker testing"
+    },
+    {
       "number": "H5013",
       "title": "To establish a celiac disease screening pilot program",
       "state": "MA",
@@ -58,16 +68,6 @@
       "lastActionDate": "2026-07-22",
       "url": "https://legiscan.com/MA/bill/H4552/2025",
       "matched_keyword": "alopecia areata"
-    },
-    {
-      "number": "SB3509",
-      "title": "INS CD-BIOMARKER TESTING",
-      "state": "IL",
-      "relevance": 99,
-      "lastAction": "Added as Co-Sponsor Sen. Mary Edly-Allen",
-      "lastActionDate": "2026-06-30",
-      "url": "https://legiscan.com/IL/bill/SB3509/2025",
-      "matched_keyword": "biomarker testing"
     },
     {
       "number": "S3124",
@@ -1288,16 +1288,6 @@
       "lastActionDate": "2025-04-24",
       "url": "https://legiscan.com/PA/bill/HR8/2025",
       "matched_keyword": "alopecia areata"
-    },
-    {
-      "number": "SB2674",
-      "title": "Relating to health benefit plan coverage for certain biomarker testing.",
-      "state": "TX",
-      "relevance": 95,
-      "lastAction": "Referred to Health & Human Services",
-      "lastActionDate": "2025-04-03",
-      "url": "https://legiscan.com/TX/bill/SB2674/2025",
-      "matched_keyword": "biomarker testing"
     },
     {
       "number": "SF2873",
