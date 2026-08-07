@@ -1,6 +1,6 @@
 {
-  "updated_at": 1785944149.497924,
-  "updated_at_readable": "2026-08-05 15:35 UTC",
+  "updated_at": 1786113022.5114462,
+  "updated_at_readable": "2026-08-07 14:30 UTC",
   "count": 153,
   "states_covered": [
     "CA",
@@ -39,6 +39,16 @@
   ],
   "states_covered_count": 33,
   "bills": [
+    {
+      "number": "HB1638",
+      "title": "Creating a bypass mechanism for health insurer step therapy protocols when medically necessary.",
+      "state": "NH",
+      "relevance": 99,
+      "lastAction": "Public Hearing: 02/17/2026 11:00 am GP 159",
+      "lastActionDate": "2026-08-05",
+      "url": "https://legiscan.com/NH/bill/HB1638/2026",
+      "matched_keyword": "step therapy"
+    },
     {
       "number": "SB3509",
       "title": "INS CD-BIOMARKER TESTING",
@@ -668,16 +678,6 @@
       "lastActionDate": "2026-03-11",
       "url": "https://legiscan.com/MI/bill/HR0260/2025",
       "matched_keyword": "multiple sclerosis"
-    },
-    {
-      "number": "HB1638",
-      "title": "Creating a bypass mechanism for health insurer step therapy protocols when medically necessary.",
-      "state": "NH",
-      "relevance": 99,
-      "lastAction": "Refer for Interim Study: Motion Adopted Voice Vote 03/11/2026 House Journal  7 P. 13",
-      "lastActionDate": "2026-03-11",
-      "url": "https://legiscan.com/NH/bill/HB1638/2026",
-      "matched_keyword": "step therapy"
     },
     {
       "number": "A4550",
