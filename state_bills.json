@@ -1,7 +1,7 @@
 {
-  "updated_at": 1786717779.2111523,
-  "updated_at_readable": "2026-08-14 14:29 UTC",
-  "count": 153,
+  "updated_at": 1786888219.661972,
+  "updated_at_readable": "2026-08-16 13:50 UTC",
+  "count": 154,
   "states_covered": [
     "CA",
     "CT",
@@ -1288,6 +1288,16 @@
       "lastActionDate": "2025-04-24",
       "url": "https://legiscan.com/PA/bill/HR8/2025",
       "matched_keyword": "alopecia areata"
+    },
+    {
+      "number": "SB2674",
+      "title": "Relating to health benefit plan coverage for certain biomarker testing.",
+      "state": "TX",
+      "relevance": 95,
+      "lastAction": "Referred to Health & Human Services",
+      "lastActionDate": "2025-04-03",
+      "url": "https://legiscan.com/TX/bill/SB2674/2025",
+      "matched_keyword": "biomarker testing"
     },
     {
       "number": "SF2873",
