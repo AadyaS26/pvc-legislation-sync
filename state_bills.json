@@ -1,7 +1,7 @@
 {
-  "updated_at": 1787148256.0087454,
-  "updated_at_readable": "2026-08-19 14:04 UTC",
-  "count": 154,
+  "updated_at": 1787234808.487535,
+  "updated_at_readable": "2026-08-20 14:06 UTC",
+  "count": 155,
   "states_covered": [
     "CA",
     "CT",
@@ -39,6 +39,16 @@
   ],
   "states_covered_count": 33,
   "bills": [
+    {
+      "number": "HR597",
+      "title": "Recognizing the month of September 2026 as \"Alopecia Areata Awareness Month\" in Pennsylvania.",
+      "state": "PA",
+      "relevance": 99,
+      "lastAction": "Referred to Health",
+      "lastActionDate": "2026-08-19",
+      "url": "https://legiscan.com/PA/bill/HR597/2025",
+      "matched_keyword": "alopecia areata"
+    },
     {
       "number": "HB1638",
       "title": "Creating a bypass mechanism for health insurer step therapy protocols when medically necessary.",
