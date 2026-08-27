@@ -1,6 +1,6 @@
 {
-  "updated_at": 1787753367.782607,
-  "updated_at_readable": "2026-08-26 14:09 UTC",
+  "updated_at": 1787871620.188124,
+  "updated_at_readable": "2026-08-27 23:00 UTC",
   "count": 155,
   "states_covered": [
     "CA",
@@ -40,6 +40,26 @@
   "states_covered_count": 33,
   "bills": [
     {
+      "number": "HB1638",
+      "title": "Creating a bypass mechanism for health insurer step therapy protocols when medically necessary.",
+      "state": "NH",
+      "relevance": 99,
+      "lastAction": "Subcommittee Work Session: 09/09/2026 10:00 am GP 229",
+      "lastActionDate": "2026-08-21",
+      "url": "https://legiscan.com/NH/bill/HB1638/2026",
+      "matched_keyword": "step therapy"
+    },
+    {
+      "number": "SB606",
+      "title": "Relative to insurance coverage for biomarker testing.",
+      "state": "NH",
+      "relevance": 99,
+      "lastAction": "Subcommittee Work Session: 09/09/2026 10:00 am GP 229",
+      "lastActionDate": "2026-08-21",
+      "url": "https://legiscan.com/NH/bill/SB606/2026",
+      "matched_keyword": "biomarker testing"
+    },
+    {
       "number": "HR597",
       "title": "Recognizing the month of September 2026 as \"Alopecia Areata Awareness Month\" in Pennsylvania.",
       "state": "PA",
@@ -48,16 +68,6 @@
       "lastActionDate": "2026-08-19",
       "url": "https://legiscan.com/PA/bill/HR597/2025",
       "matched_keyword": "alopecia areata"
-    },
-    {
-      "number": "HB1638",
-      "title": "Creating a bypass mechanism for health insurer step therapy protocols when medically necessary.",
-      "state": "NH",
-      "relevance": 99,
-      "lastAction": "Public Hearing: 02/17/2026 11:00 am GP 159",
-      "lastActionDate": "2026-08-05",
-      "url": "https://legiscan.com/NH/bill/HB1638/2026",
-      "matched_keyword": "step therapy"
     },
     {
       "number": "SB3509",
@@ -327,16 +337,6 @@
       "lastAction": "Comp. became Pub. Ch. 929",
       "lastActionDate": "2026-05-14",
       "url": "https://legiscan.com/TN/bill/SB0435/2025",
-      "matched_keyword": "biomarker testing"
-    },
-    {
-      "number": "SB606",
-      "title": "Relative to insurance coverage for biomarker testing.",
-      "state": "NH",
-      "relevance": 99,
-      "lastAction": "Refer for Interim Study: Motion Adopted Voice Vote 05/14/2026 House Journal  13 P. 9",
-      "lastActionDate": "2026-05-14",
-      "url": "https://legiscan.com/NH/bill/SB606/2026",
       "matched_keyword": "biomarker testing"
     },
     {
