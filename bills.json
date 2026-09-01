@@ -1,7 +1,7 @@
 {
-  "updated_at": 1788036141.4668446,
-  "updated_at_readable": "2026-08-29 20:42 UTC",
-  "count": 8,
+  "updated_at": 1788294586.2909322,
+  "updated_at_readable": "2026-09-01 20:29 UTC",
+  "count": 6,
   "bills": [
     {
       "number": "HRES1331",
@@ -56,24 +56,6 @@
       "latestActionDate": "2025-06-06",
       "url": "https://api.congress.gov/v3/bill/119/hres/484?format=json",
       "matched_keyword": "hidradenitis suppurativa"
-    },
-    {
-      "number": "HRES245",
-      "title": "Recognizing the significance of Sj\u00f6gren's disease as a serious and systemic autoimmune disease and expressing support for the designation of April 2025 as \"Sj\u00f6gren's Awareness Month\".",
-      "congress": 119,
-      "latestActionText": "Referred to the House Committee on Energy and Commerce.",
-      "latestActionDate": "2025-03-24",
-      "url": "https://api.congress.gov/v3/bill/119/hres/245?format=json",
-      "matched_keyword": "autoimmune disease"
-    },
-    {
-      "number": "HRES225",
-      "title": "Supporting the designation of March as \"Autoimmune Awareness Month\" and supporting efforts to increase awareness of autoimmune diseases and increase funding for autoimmune disease research.",
-      "congress": 119,
-      "latestActionText": "Referred to the House Committee on Energy and Commerce.",
-      "latestActionDate": "2025-03-14",
-      "url": "https://api.congress.gov/v3/bill/119/hres/225?format=json",
-      "matched_keyword": "autoimmune disease"
     }
   ]
 }
