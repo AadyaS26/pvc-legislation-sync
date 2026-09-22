@@ -1,6 +1,6 @@
 {
-  "updated_at": 1790016619.8674076,
-  "updated_at_readable": "2026-09-21 18:50 UTC",
+  "updated_at": 1790098846.125179,
+  "updated_at_readable": "2026-09-22 17:40 UTC",
   "count": 156,
   "states_covered": [
     "CA",
@@ -39,6 +39,16 @@
   ],
   "states_covered_count": 33,
   "bills": [
+    {
+      "number": "HR620",
+      "title": "Urging the Congress of the United States to adopt legislation providing screening to firefighters for sarcoidosis and other occupational diseases linked to chronic exposure to smoke, soot, PFAS, combustion byproducts, particulate matter and other fireground toxins and ensuring that our nation's firefighters receive comprehensive early detection for conditions that carry significant risks of long-term lung damage and other ailments, which require timely diagnoses for effective intervention.",
+      "state": "PA",
+      "relevance": 99,
+      "lastAction": "Referred to Intergovernmental Affairs & Operations",
+      "lastActionDate": "2026-09-21",
+      "url": "https://legiscan.com/PA/bill/HR620/2025",
+      "matched_keyword": "sarcoidosis"
+    },
     {
       "number": "HB1638",
       "title": "Creating a bypass mechanism for health insurer step therapy protocols when medically necessary.",
@@ -1588,16 +1598,6 @@
       "lastActionDate": "2025-01-14",
       "url": "https://legiscan.com/NY/bill/J00105/2025",
       "matched_keyword": "hidradenitis suppurativa"
-    },
-    {
-      "number": "HR620",
-      "title": "Urging the Congress of the United States to adopt legislation providing screening to firefighters for sarcoidosis and other occupational diseases linked to chronic exposure to smoke, soot, PFAS, combustion byproducts, particulate matter and other fireground toxins and ensuring that our nation's firefighters receive comprehensive early detection for conditions that carry significant risks of long-term lung damage and other ailments, which require timely diagnoses for effective intervention.",
-      "state": "PA",
-      "relevance": 84,
-      "lastAction": null,
-      "lastActionDate": null,
-      "url": "https://legiscan.com/PA/bill/HR620/2025",
-      "matched_keyword": "sarcoidosis"
     }
   ]
 }
