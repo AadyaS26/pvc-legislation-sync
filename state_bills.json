@@ -1,6 +1,6 @@
 {
-  "updated_at": 1790626217.3533802,
-  "updated_at_readable": "2026-09-28 20:10 UTC",
+  "updated_at": 1790707528.2557921,
+  "updated_at_readable": "2026-09-29 18:45 UTC",
   "count": 156,
   "states_covered": [
     "CA",
@@ -40,6 +40,16 @@
   "states_covered_count": 33,
   "bills": [
     {
+      "number": "HR597",
+      "title": "Recognizing the month of September 2026 as \"Alopecia Areata Awareness Month\" in Pennsylvania.",
+      "state": "PA",
+      "relevance": 99,
+      "lastAction": "Reported as committed",
+      "lastActionDate": "2026-09-29",
+      "url": "https://legiscan.com/PA/bill/HR597/2025",
+      "matched_keyword": "alopecia areata"
+    },
+    {
       "number": "HR620",
       "title": "Urging the Congress of the United States to adopt legislation providing screening to firefighters for sarcoidosis and other occupational diseases linked to chronic exposure to smoke, soot, PFAS, combustion byproducts, particulate matter and other fireground toxins and ensuring that our nation's firefighters receive comprehensive early detection for conditions that carry significant risks of long-term lung damage and other ailments, which require timely diagnoses for effective intervention.",
       "state": "PA",
@@ -68,16 +78,6 @@
       "lastActionDate": "2026-08-21",
       "url": "https://legiscan.com/NH/bill/SB606/2026",
       "matched_keyword": "biomarker testing"
-    },
-    {
-      "number": "HR597",
-      "title": "Recognizing the month of September 2026 as \"Alopecia Areata Awareness Month\" in Pennsylvania.",
-      "state": "PA",
-      "relevance": 99,
-      "lastAction": "Referred to Health",
-      "lastActionDate": "2026-08-19",
-      "url": "https://legiscan.com/PA/bill/HR597/2025",
-      "matched_keyword": "alopecia areata"
     },
     {
       "number": "SB3509",
