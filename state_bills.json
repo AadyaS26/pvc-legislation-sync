@@ -1,6 +1,6 @@
 {
-  "updated_at": 1790881026.1033423,
-  "updated_at_readable": "2026-10-01 18:57 UTC",
+  "updated_at": 1790966050.1950157,
+  "updated_at_readable": "2026-10-02 18:34 UTC",
   "count": 156,
   "states_covered": [
     "CA",
@@ -39,6 +39,16 @@
   ],
   "states_covered_count": 33,
   "bills": [
+    {
+      "number": "HB2819",
+      "title": "In casualty insurance, further providing for coverage for biomarker testing.",
+      "state": "PA",
+      "relevance": 98,
+      "lastAction": "Referred to Insurance",
+      "lastActionDate": "2026-10-02",
+      "url": "https://legiscan.com/PA/bill/HB2819/2025",
+      "matched_keyword": "biomarker testing"
+    },
     {
       "number": "HR597",
       "title": "Recognizing the month of September 2026 as \"Alopecia Areata Awareness Month\" in Pennsylvania.",
@@ -1308,16 +1318,6 @@
       "lastActionDate": "2025-04-24",
       "url": "https://legiscan.com/PA/bill/HR8/2025",
       "matched_keyword": "alopecia areata"
-    },
-    {
-      "number": "SB2674",
-      "title": "Relating to health benefit plan coverage for certain biomarker testing.",
-      "state": "TX",
-      "relevance": 95,
-      "lastAction": "Referred to Health & Human Services",
-      "lastActionDate": "2025-04-03",
-      "url": "https://legiscan.com/TX/bill/SB2674/2025",
-      "matched_keyword": "biomarker testing"
     },
     {
       "number": "SF2873",
