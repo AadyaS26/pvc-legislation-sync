@@ -1,7 +1,7 @@
 {
-  "updated_at": 1792437820.1302764,
-  "updated_at_readable": "2026-10-19 19:23 UTC",
-  "count": 156,
+  "updated_at": 1792519383.0063224,
+  "updated_at_readable": "2026-10-20 18:03 UTC",
+  "count": 157,
   "states_covered": [
     "CA",
     "CT",
@@ -39,6 +39,16 @@
   ],
   "states_covered_count": 33,
   "bills": [
+    {
+      "number": "HR1632",
+      "title": "Expressing support for the designation of October 17, 2026, as \"National Vitiligo Awareness Day\".",
+      "state": "US",
+      "relevance": 98,
+      "lastAction": "Referred to the House Committee on Energy and Commerce.",
+      "lastActionDate": "2026-10-19",
+      "url": "https://legiscan.com/US/bill/HR1632/2025",
+      "matched_keyword": "vitiligo"
+    },
     {
       "number": "HB2819",
       "title": "In casualty insurance, further providing for coverage for biomarker testing.",
