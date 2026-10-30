@@ -1,7 +1,7 @@
 {
-  "updated_at": 1793300670.4557064,
-  "updated_at_readable": "2026-10-29 19:04 UTC",
-  "count": 157,
+  "updated_at": 1793385723.7471895,
+  "updated_at_readable": "2026-10-30 18:42 UTC",
+  "count": 158,
   "states_covered": [
     "CA",
     "CT",
@@ -1608,6 +1608,16 @@
       "lastActionDate": "2025-01-14",
       "url": "https://legiscan.com/NY/bill/J00105/2025",
       "matched_keyword": "hidradenitis suppurativa"
+    },
+    {
+      "number": "A5770",
+      "title": "Establishes requirements concerning celiac disease identification on patient intake forms; provides for voluntary type 1 diabetes and celiac disease screening guidance and public education.",
+      "state": "NJ",
+      "relevance": 91,
+      "lastAction": null,
+      "lastActionDate": null,
+      "url": "https://legiscan.com/NJ/bill/A5770/2026",
+      "matched_keyword": "celiac disease"
     }
   ]
 }
