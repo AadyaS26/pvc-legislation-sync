@@ -1,7 +1,7 @@
 {
-  "updated_at": 1793736669.6242843,
-  "updated_at_readable": "2026-11-03 20:11 UTC",
-  "count": 158,
+  "updated_at": 1793824123.8987367,
+  "updated_at_readable": "2026-11-04 20:28 UTC",
+  "count": 159,
   "states_covered": [
     "CA",
     "CT",
@@ -39,6 +39,16 @@
   ],
   "states_covered_count": 33,
   "bills": [
+    {
+      "number": "HJR0071",
+      "title": "HIDRADENITIS SUPPURATIVA AWARE",
+      "state": "IL",
+      "relevance": 97,
+      "lastAction": "Filed with the Clerk by Rep. Yolonda Morris",
+      "lastActionDate": "2026-11-04",
+      "url": "https://legiscan.com/IL/bill/HJR0071/2025",
+      "matched_keyword": "hidradenitis suppurativa"
+    },
     {
       "number": "HR1632",
       "title": "Expressing support for the designation of October 17, 2026, as \"National Vitiligo Awareness Day\".",
