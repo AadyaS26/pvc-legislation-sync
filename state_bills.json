@@ -1,7 +1,7 @@
 {
-  "updated_at": 1794265412.3665497,
-  "updated_at_readable": "2026-11-09 23:03 UTC",
-  "count": 159,
+  "updated_at": 1794342650.1919374,
+  "updated_at_readable": "2026-11-10 20:30 UTC",
+  "count": 158,
   "states_covered": [
     "CA",
     "CT",
@@ -29,7 +29,6 @@
     "RI",
     "SC",
     "TN",
-    "TX",
     "US",
     "VA",
     "VT",
@@ -37,7 +36,7 @@
     "WI",
     "WV"
   ],
-  "states_covered_count": 33,
+  "states_covered_count": 32,
   "bills": [
     {
       "number": "HJR0071",
@@ -1268,16 +1267,6 @@
       "lastActionDate": "2025-05-21",
       "url": "https://legiscan.com/DE/bill/SB146/2025",
       "matched_keyword": "type 1 diabetes"
-    },
-    {
-      "number": "HB5178",
-      "title": "Relating to health benefit plan coverage for certain biomarker testing.",
-      "state": "TX",
-      "relevance": 97,
-      "lastAction": "Placed on General State Calendar",
-      "lastActionDate": "2025-05-15",
-      "url": "https://legiscan.com/TX/bill/HB5178/2025",
-      "matched_keyword": "biomarker testing"
     },
     {
       "number": "J00951",
