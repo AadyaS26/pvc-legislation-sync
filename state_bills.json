@@ -1,6 +1,6 @@
 {
-  "updated_at": 1794869856.2929327,
-  "updated_at_readable": "2026-11-16 22:57 UTC",
+  "updated_at": 1794952242.574572,
+  "updated_at_readable": "2026-11-17 21:50 UTC",
   "count": 158,
   "states_covered": [
     "CA",
@@ -43,10 +43,20 @@
       "title": "HIDRADENITIS SUPPURATIVA AWARE",
       "state": "IL",
       "relevance": 97,
-      "lastAction": "Filed with the Clerk by Rep. Yolonda Morris",
-      "lastActionDate": "2026-11-04",
+      "lastAction": "Referred to Rules Committee",
+      "lastActionDate": "2026-11-17",
       "url": "https://legiscan.com/IL/bill/HJR0071/2025",
       "matched_keyword": "hidradenitis suppurativa"
+    },
+    {
+      "number": "A5770",
+      "title": "Establishes requirements concerning celiac disease identification on patient intake forms; provides for voluntary type 1 diabetes and celiac disease screening guidance and public education.",
+      "state": "NJ",
+      "relevance": 99,
+      "lastAction": "Introduced, Referred to Assembly Health Committee",
+      "lastActionDate": "2026-11-16",
+      "url": "https://legiscan.com/NJ/bill/A5770/2026",
+      "matched_keyword": "type 1 diabetes"
     },
     {
       "number": "HR1632",
@@ -1607,16 +1617,6 @@
       "lastActionDate": "2025-01-14",
       "url": "https://legiscan.com/NY/bill/J00105/2025",
       "matched_keyword": "hidradenitis suppurativa"
-    },
-    {
-      "number": "A5770",
-      "title": "Establishes requirements concerning celiac disease identification on patient intake forms; provides for voluntary type 1 diabetes and celiac disease screening guidance and public education.",
-      "state": "NJ",
-      "relevance": 91,
-      "lastAction": null,
-      "lastActionDate": null,
-      "url": "https://legiscan.com/NJ/bill/A5770/2026",
-      "matched_keyword": "celiac disease"
     }
   ]
 }
