@@ -1,7 +1,7 @@
 {
-  "updated_at": 1795561741.8120806,
-  "updated_at_readable": "2026-11-24 23:09 UTC",
-  "count": 158,
+  "updated_at": 1795646316.3517253,
+  "updated_at_readable": "2026-11-25 22:38 UTC",
+  "count": 159,
   "states_covered": [
     "CA",
     "CT",
@@ -38,6 +38,16 @@
   ],
   "states_covered_count": 32,
   "bills": [
+    {
+      "number": "HB11155",
+      "title": "To amend title 38, United States Code, to establish a presumption that sarcoidosis is a service-connected disease for certain veterans.",
+      "state": "US",
+      "relevance": 97,
+      "lastAction": "Referred to the House Committee on Veterans' Affairs.",
+      "lastActionDate": "2026-11-24",
+      "url": "https://legiscan.com/US/bill/HB11155/2025",
+      "matched_keyword": "sarcoidosis"
+    },
     {
       "number": "HJR0071",
       "title": "HIDRADENITIS SUPPURATIVA AWARE",
